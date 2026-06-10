@@ -2,5 +2,7 @@
 namespace ReliableNotifications.Temporal.Workflows;
 
 public sealed record NotificationWorkflowInput(
+    Guid NotificationId,
     string Recipient,
-    string Message);
+    string Content,
+    string IdempotencyKey);
