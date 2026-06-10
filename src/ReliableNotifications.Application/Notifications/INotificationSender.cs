@@ -5,6 +5,6 @@ public interface INotificationSender
 {
     Task<string> SendAsync(
         string recipient,
-        string message,
+        string content,
         CancellationToken cancellationToken = default);
 }

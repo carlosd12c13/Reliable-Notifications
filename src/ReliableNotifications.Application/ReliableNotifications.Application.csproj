@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ReliableNotifications.Domain\ReliableNotifications.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
