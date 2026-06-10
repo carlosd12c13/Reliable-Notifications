@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/ReliableNotifications.Api/ReliableNotifications.Api.csproj" />
+    <Project Path="src/ReliableNotifications.Application/ReliableNotifications.Application.csproj" />
+    <Project Path="src/ReliableNotifications.Domain/ReliableNotifications.Domain.csproj" />
+    <Project Path="src/ReliableNotifications.Infrastructure/ReliableNotifications.Infrastructure.csproj" />
+    <Project Path="src/ReliableNotifications.Temporal/ReliableNotifications.Temporal.csproj" />
+    <Project Path="src/ReliableNotifications.TemporalWorker/ReliableNotifications.TemporalWorker.csproj" />
+  </Folder>
+</Solution>
