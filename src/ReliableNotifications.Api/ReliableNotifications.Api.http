@@ -9,3 +9,75 @@ Accept: application/json
 }
 
 ###
+ 
+### 1. Flujo válido: validación, persistencia y envío
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "[carlos@example.com](mailto:carlos@example.com)",
+"content": "Notificación válida desde Temporal",
+"idempotencyKey": "notification-valid-001"
+}
+
+### 2. Error no recuperable: destinatario vacío
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "",
+"content": "Esta notificación no debe enviarse",
+"idempotencyKey": "notification-invalid-recipient-001"
+}
+
+### 3. Error no recuperable: contenido vacío
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "[carlos@example.com](mailto:carlos@example.com)",
+"content": "",
+"idempotencyKey": "notification-invalid-content-001"
+}
+
+### 4. Error no recuperable: clave de idempotencia vacía
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "[carlos@example.com](mailto:carlos@example.com)",
+"content": "Mensaje sin clave de idempotencia",
+"idempotencyKey": ""
+}
+
+### 5. Segunda solicitud con la misma clave
+
+### Por ahora probablemente se enviará otra vez.
+
+### Más adelante debe servir para probar la idempotencia.
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "[carlos@example.com](mailto:carlos@example.com)",
+"content": "Primera solicitud con clave repetida",
+"idempotencyKey": "notification-duplicate-001"
+}
+
+###
+
+POST {{ReliableNotifications.Api_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+"recipient": "[carlos@example.com](mailto:carlos@example.com)",
+"content": "Segunda solicitud con clave repetida",
+"idempotencyKey": "notification-duplicate-001"
+}
+
+

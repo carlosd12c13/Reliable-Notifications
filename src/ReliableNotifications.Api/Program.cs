@@ -1,5 +1,6 @@
 
 using ReliableNotifications.Api.Contracts;
+using ReliableNotifications.Domain.Notifications;
 using ReliableNotifications.Temporal;
 using ReliableNotifications.Temporal.Workflows;
 using Temporalio.Client;
@@ -18,13 +19,16 @@ app.MapPost("/notifications", async (
     ITemporalClient temporalClient) =>
 {
     var workflowId = $"notification-{Guid.NewGuid():N}";
+    var notificationId = Guid.NewGuid();
 
     await temporalClient.StartWorkflowAsync(
         (NotificationWorkflow workflow) =>
             workflow.RunAsync(
                 new NotificationWorkflowInput(
+                    notificationId,
                     request.Recipient,
-                    request.Message)),
+                    request.Content,
+                    request.IdempotencyKey)),
         new WorkflowOptions(
             id: workflowId,
             taskQueue: TemporalTaskQueues.Notifications));

@@ -2,4 +2,5 @@
 
 public sealed record StartNotificationRequest(
     string Recipient,
-    string Message);
+    string Content,
+    string IdempotencyKey);
