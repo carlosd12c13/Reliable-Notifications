@@ -10,7 +10,10 @@ using Temporalio.Extensions.Hosting;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddScoped<INotificationSender, FakeNotificationSender>();
-
+builder.Services.AddSingleton<
+    INotificationStore,
+    InMemoryNotificationStore>();
+builder.Services.AddSingleton<NotificationLifecycleService>();
 builder.Services
     .AddHostedTemporalWorker(
         clientTargetHost: "localhost:7233",
