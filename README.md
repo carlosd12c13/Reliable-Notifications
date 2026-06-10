@@ -1,24 +1,23 @@
 # Reliable Notifications
 
-Laboratorio en .NET 10 y C# para explorar Temporal como motor de
-orquestacion de procesos confiables.
+Lab project in .NET 10 and C# for exploring Temporal as a reliable process
+orchestration engine.
 
-El proyecto modela el envio de notificaciones como un workflow: una API recibe
-la solicitud, inicia la ejecucion en Temporal y un worker procesa las
-actividades de validacion, persistencia y envio simulado.
+The project models notification delivery as a workflow: an API receives the
+request, starts the execution in Temporal, and a worker processes validation,
+persistence, and simulated delivery activities.
 
-## Contenido
+## Contents
 
-- `ReliableNotifications.Api`: endpoint HTTP para iniciar workflows de
-  notificacion.
-- `ReliableNotifications.Temporal`: definicion del workflow, activities y task
-  queue.
-- `ReliableNotifications.TemporalWorker`: worker hospedado que registra y
-  ejecuta workflows/activities.
-- `ReliableNotifications.Application`, `Domain` e `Infrastructure`: logica de
-  negocio, modelo de notificacion y adaptadores en memoria/fake para el
-  laboratorio.
+- `ReliableNotifications.Api`: HTTP endpoint that starts notification
+  workflows.
+- `ReliableNotifications.Temporal`: workflow, activities, and task queue
+  definitions.
+- `ReliableNotifications.TemporalWorker`: hosted worker that registers and runs
+  workflows and activities.
+- `ReliableNotifications.Application`, `Domain`, and `Infrastructure`: business
+  logic, notification model, and in-memory/fake adapters for the lab.
 
-El objetivo no es ser un sistema de notificaciones listo para produccion, sino
-un espacio pequeno para entender como Temporal coordina trabajo, reintentos y
-separacion entre orquestacion y ejecucion.
+The goal is not to be a production-ready notification system, but a small space
+to understand how Temporal coordinates work, retries, and the separation between
+orchestration and execution.
